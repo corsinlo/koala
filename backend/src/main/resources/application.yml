@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:${APP_DB_PATH:/app/data/maplewood_school.sqlite}
+    hikari:
+      maximum-pool-size: 5
+  main:
+    banner-mode: "off"
+
+# Allow the dev UI (Vite) and the containerized UI (nginx) by default
+app:
+  cors:
+    allowed-origins: ${APP_CORS_ORIGINS:http://localhost:5173,http://localhost:8080,http://localhost}
